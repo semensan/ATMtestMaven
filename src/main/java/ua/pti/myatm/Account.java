@@ -8,5 +8,4 @@ public interface Account {
     //������� ��������� ����� �� �����
     //���������� �����, ������� ���� �����
     public double withdrow(double amount);
-    
 }

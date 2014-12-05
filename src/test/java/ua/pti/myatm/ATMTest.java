@@ -159,4 +159,23 @@ public class ATMTest {
     	fail("NotEnoughtMoneyInATMexception expected");
     }
     
+    @Test
+    public void testGetCashEqualMoneyInATMAndToWithdrow() throws NoCardInsertedException, NotEnoughtMoneyInAccountException, NotEnoughtMoneyInATMexception {
+    	ATM instance = new ATM(100.0);
+        Card card = mock(Card.class);
+        Account account = mock(Account.class);
+        double amount = 100.0;
+        double expResult=400;
+        
+        when(card.checkPin(0000)).thenReturn(true);
+		when(card.isBlocked()).thenReturn(false);
+        when(card.getAccount()).thenReturn(account);
+        stub(account.getBalance()).toReturn(500.0).toReturn(400.0);
+        when(account.withdrow(amount)).thenReturn(amount);
+        
+        instance.validateCard(card, 0000);
+    	
+    	assertEquals(expResult, instance.getCash(amount), 0.0000001);
+    }
+    
 }
