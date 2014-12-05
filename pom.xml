@@ -23,7 +23,6 @@
             <version>1.10.8</version>
             <scope>test</scope>
         </dependency>
-    </dependencies>
-    
+    </dependencies>    
    
 </project>
